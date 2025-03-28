@@ -1,14 +1,16 @@
-import  { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { TasksPage } from './pages/TasksPage';
-import { TaskFormPage }  from './pages/TaskFormPage'
-
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { TasksPage } from "./pages/TasksPage";
+import { TasksFormPage } from "./pages/TaskFormPage";
+import { Navigation } from "./components/Navigation";
 function app() {
   return (
     <BrowserRouter>
-    <Routes>
-    <Route path='/' element={<TasksPage />} />
-    <Route path='/tasks-create' element={<TaskFormPage />} />
-    </Routes>
+      <Navigation />
+      <Routes>
+        <Route path="/" element={<Navigate to="/Tasks" />} />
+        <Route path="/tasks" element={<TasksFormPage />} />
+        <Route path="/tasks-create" element={<TasksPage />} />
+      </Routes>
     </BrowserRouter>
   );
 }
